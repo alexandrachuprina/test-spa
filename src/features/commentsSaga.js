@@ -1,17 +1,13 @@
-import { put, call, takeEvery } from "redux-saga/effects";
-import { getCommentsSuccess } from "./commentsSlice";
-import { useSelector } from "react-redux";
+import { put, call, takeEvery, select } from "redux-saga/effects";
+import { getCommentsSuccess, selectUserId } from "./commentsSlice";
 
 function* sagaGetComments() {
-  // const id = useSelector(() => state.comments.userId);
-  // console.log("id");
-  // console.log(id);
-
+  const id = yield select(selectUserId);
   const comments = yield call(() =>
-    fetch(`https://jsonplaceholder.typicode.com/posts/1/comments`)
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
   );
   const formattedComments = yield comments.json();
-  // console.log("comments");
+  // console.log(id);
   yield put(getCommentsSuccess(formattedComments));
 }
 

@@ -21,12 +21,15 @@ const commentsSlice = createSlice({
     getCommentsSuccess: (state, action) => {
       state.comments = action.payload;
       state.isLoading = false;
-      // console.log(action.payload) WORKS
+      console.log(action.payload)
     },
   },
 });
 
 export const { getUserId, getComments, getCommentsSuccess } =
   commentsSlice.actions;
+
+// export const id = state.comments.userId;
+export const selectUserId = (state) => state.comments.userId;
 
 export default commentsSlice.reducer;
