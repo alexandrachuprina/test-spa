@@ -25,3 +25,4 @@ export const postsSlice = createSlice({
 export const { getPosts, getPostsSuccess, getPostsFailure } = postsSlice.actions;
 
 export default postsSlice.reducer;
+

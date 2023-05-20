@@ -7,11 +7,11 @@ function Home() {
   return (
     <Container>
       <Row>
-        <Col>
-          <p>Главная</p>
-          {/* <Post/> */}
-          <ListOfPosts/>
-        </Col>
+        {/* <Col> */}
+      {/* <Row> */}
+        <ListOfPosts />
+      {/* </Row> */}
+      {/* </Col> */}
       </Row>
     </Container>
   );

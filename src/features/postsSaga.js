@@ -3,7 +3,7 @@ import { getPostsSuccess } from "./postsSlice";
 
 function* sagaGetPosts() {
   const posts = yield call(() =>
-    fetch("https://jsonplaceholder.typicode.com/posts/1")
+    fetch("https://jsonplaceholder.typicode.com/posts?limit=10")
   );
   const formattedPosts = yield posts.json();
   yield put(getPostsSuccess(formattedPosts))
