@@ -1,0 +1,20 @@
+import React from "react";
+import { Row, Col, Container } from "react-bootstrap";
+import Post from "../Post/Post";
+import ListOfPosts from "../ListOfPosts/ListOfPosts";
+
+function Home() {
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <p>Главная</p>
+          {/* <Post/> */}
+          <ListOfPosts/>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
+
+export default Home;
