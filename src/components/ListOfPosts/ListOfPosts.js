@@ -11,12 +11,11 @@ function ListOfPosts() {
   useEffect(() => {
     dispatch(getPosts());
   }, []);
-  console.log(posts);
 
   return (
     <>
       {posts.map((elem) => (
-        <Post title={elem.title} text={elem.body} userId={elem.userId} key={elem.id}/>
+        <Post title={elem.title} text={elem.body} userId={elem.userId} postId={elem.id} key={elem.id}/>
       ))}
     </>
   );
