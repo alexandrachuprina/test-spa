@@ -12,16 +12,13 @@ const commentsSlice = createSlice({
   reducers: {
     getUserId: (state, action) => {
       state.userId = action.payload;
-      // console.log(action.payload)  WORKS
     },
     getComments: (state) => {
       state.isLoading = true;
-      // console.log('getComments') WORKS
     },
     getCommentsSuccess: (state, action) => {
       state.comments = action.payload;
       state.isLoading = false;
-      console.log(action.payload)
     },
   },
 });

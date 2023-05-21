@@ -7,7 +7,6 @@ function* sagaGetComments() {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
   );
   const formattedComments = yield comments.json();
-  // console.log(id);
   yield put(getCommentsSuccess(formattedComments));
 }
 
