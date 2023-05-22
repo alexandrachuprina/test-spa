@@ -18,7 +18,6 @@ const commentsSlice = createSlice({
     },
     getCommentsSuccess: (state, action) => {
       state.comments = action.payload;
-      // console.log(action.payload)
       state.isLoading = false;
     },
   },

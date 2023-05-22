@@ -9,7 +9,6 @@ import Comment from "../Comment/Comment";
 
 function PostByUser({ title, text, postId }) {
   const allComments = useSelector((state) => state.comments.comments);
-  const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
 

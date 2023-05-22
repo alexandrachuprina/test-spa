@@ -7,16 +7,24 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Comment from "../Comment/Comment";
 import Photo from "../Photo/Photo";
+import { Col, Spinner } from "react-bootstrap";
 
 function Post({ title, text, userId, postId }) {
   const allComments = useSelector((state) => state.comments.comments);
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setComments(allComments);
-  }, [showComments])
+  }, [showComments]);
+
+  const setDelay = () => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  };
 
   return (
     <Card style={{ width: "400px", margin: "2vh" }}>
@@ -31,20 +39,35 @@ function Post({ title, text, userId, postId }) {
           onClick={() => {
             dispatch(getPostId(postId));
             setShowComments(!showComments);
+            setDelay();
           }}
         >
           Комментарии
         </Button>
-        {showComments ? (
-          <>
-            {comments.filter((elem) => elem.postId === postId).map((elem) => (
-              <Comment title={elem.email} text={elem.body} key={elem.id} />
-            ))}
-          </>
-        ) : null}
+        <Card.Body>
+          {showComments ? (
+            <>
+              {isLoading ? (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              ) : (
+                <>
+                  {comments
+                    .filter((elem) => elem.postId === postId)
+                    .map((elem) => (
+                      <Comment
+                        title={elem.email}
+                        text={elem.body}
+                        key={elem.id}
+                      />
+                    ))}
+                </>
+              )}
+            </>
+          ) : null}
+        </Card.Body>
       </Card.Body>
-
-
     </Card>
   );
 }
