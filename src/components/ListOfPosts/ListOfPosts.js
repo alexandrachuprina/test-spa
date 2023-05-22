@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../../features/postsSlice";
 import Post from "../Post/Post";
+import { getComments } from "../../features/commentsSlice";
 // import { Container, Row, Col } from "react-bootstrap";
 
 function ListOfPosts() {
@@ -10,6 +11,7 @@ function ListOfPosts() {
 
   useEffect(() => {
     dispatch(getPosts());
+    dispatch(getComments())
   }, []);
 
   return (

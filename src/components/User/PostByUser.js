@@ -14,10 +14,8 @@ function PostByUser({ title, text, postId }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    dispatch(getPostId(postId));
-    dispatch(getComments());
     setComments(allComments);
-  }, []);
+  }, [showComments]);
 
   return (
     <Card style={{ width: "400px", margin: "2vh" }}>
@@ -27,8 +25,6 @@ function PostByUser({ title, text, postId }) {
         <Button
           variant="primary"
           onClick={() => {
-            // setComments(allComments);
-            console.log(comments)
             setShowComments(!showComments);
           }}
         >
@@ -36,11 +32,13 @@ function PostByUser({ title, text, postId }) {
         </Button>
         {showComments ? (
           <>
-            {/* {comments.length === 0 ? <p>no comments bro</p> : null} */}
+            {comments.length === 0 ? <p>no comments bro</p> : null}
 
-            {comments.map((elem) => (
-              <Comment title={elem.email} text={elem.body} key={elem.id} />
-            ))}
+            {comments
+              .filter((elem) => elem.postId === postId)
+              .map((elem) => (
+                <Comment title={elem.email} text={elem.body} key={elem.id} />
+              ))}
           </>
         ) : null}
       </Card.Body>

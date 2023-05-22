@@ -39,9 +39,6 @@ function User() {
               <ListGroup.Item>Телефон: {user.phone}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#">{user.website}</Card.Link>
-            </Card.Body>
-            <Card.Body>
               <Button
                 variant="primary"
                 onClick={() => setShowPosts(!showPosts)}
@@ -56,7 +53,7 @@ function User() {
         {showPosts ? (
           <>
             {postsByUser.map((post, i) => (
-              <PostByUser key={i} title={post.title} text={post.body} userId={user.id}/>
+              <PostByUser key={i} title={post.title} text={post.body} userId={user.id} postId={post.id}/>
             ))}
           </>
         ) : null}
