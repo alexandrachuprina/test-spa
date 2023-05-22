@@ -8,3 +8,5 @@ Work in progress
 3. Redux Saga
 4. Bootstrap 
 5. React Router 
+6. Axios
+7. JSON Placeholder
