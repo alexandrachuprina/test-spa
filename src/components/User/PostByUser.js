@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Spinner, Card, Button } from "react-bootstrap";
+import { Spinner, Card, Button, Col } from "react-bootstrap";
 import Comment from "../Comment/Comment";
 
 function PostByUser({ title, text, postId }) {
@@ -20,45 +20,47 @@ function PostByUser({ title, text, postId }) {
   };
 
   return (
-    <Card style={{ width: "400px", margin: "2vh" }}>
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>{text}</Card.Text>
-        <Button
-          variant="primary"
-          onClick={() => {
-            setShowComments(!showComments);
-            setDelay();
-          }}
-        >
-          Комментарии
-        </Button>
+    <Col xs={10} sm={6} lg={4}>
+      <Card style={{ width: "100%", margin: "2vh 0" }}>
         <Card.Body>
-          {showComments ? (
-            <>
-              {isLoading ? (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
-              ) : (
-                <>
-                  {comments.length === 0 ? <p>no comments bro</p> : null}
-                  {comments
-                    .filter((elem) => elem.postId === postId)
-                    .map((elem) => (
-                      <Comment
-                        title={elem.email}
-                        text={elem.body}
-                        key={elem.id}
-                      />
-                    ))}
-                </>
-              )}
-            </>
-          ) : null}
+          <Card.Title>{title}</Card.Title>
+          <Card.Text>{text}</Card.Text>
+          <Button
+            variant="primary"
+            onClick={() => {
+              setShowComments(!showComments);
+              setDelay();
+            }}
+          >
+            Комментарии
+          </Button>
+          <Card.Body>
+            {showComments ? (
+              <>
+                {isLoading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  <>
+                    {comments.length === 0 ? <p>no comments bro</p> : null}
+                    {comments
+                      .filter((elem) => elem.postId === postId)
+                      .map((elem) => (
+                        <Comment
+                          title={elem.email}
+                          text={elem.body}
+                          key={elem.id}
+                        />
+                      ))}
+                  </>
+                )}
+              </>
+            ) : null}
+          </Card.Body>
         </Card.Body>
-      </Card.Body>
-    </Card>
+      </Card>
+    </Col>
   );
 }
 
