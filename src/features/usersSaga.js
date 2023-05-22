@@ -1,12 +1,12 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { getUsersDataSuccess } from "./userSlice";
+import axios from "axios";
 
 function* sagaGetUsers() {
   const data = yield call(() =>
-    fetch(`https://jsonplaceholder.typicode.com/users`)
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
   );
-  const formattedData = yield data.json();
-  // console.log(formattedData);
+  const formattedData = yield data.data;
   yield put(getUsersDataSuccess(formattedData));
 }
 

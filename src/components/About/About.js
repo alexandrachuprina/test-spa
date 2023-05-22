@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap";
 import mem01 from "../../assets/mem01.jpg";
 import mem02 from "../../assets/mem02.jpg";
-import Carousel from "../Carousel/Carousel";
 
 function About() {
   const [showFirst, setShowFirst] = useState(false);
@@ -127,12 +126,9 @@ function About() {
                 знакомствам. Пожалуй, общение с людьми мое третье главное
                 увлечение.
               </Card.Text>
-              <Card.Text>В галерее — немного моих фото за последний год.</Card.Text>
+              <Card.Text>Хорошего дня!</Card.Text>
             </Card.Body>
           </Card>
-        </Col>
-        <Col>
-        {/* <Carousel/> */}
         </Col>
       </Row>
     </Container>

@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getPostId, getComments } from "../../features/commentsSlice";
-import { setUserData } from "../../features/userSlice";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { Spinner } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { Spinner, Card, Button } from "react-bootstrap";
 import Comment from "../Comment/Comment";
 
 function PostByUser({ title, text, postId }) {

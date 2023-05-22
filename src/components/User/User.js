@@ -53,7 +53,13 @@ function User() {
         {showPosts ? (
           <>
             {postsByUser.map((post, i) => (
-              <PostByUser key={i} title={post.title} text={post.body} userId={user.id} postId={post.id}/>
+              <PostByUser
+                key={i}
+                title={post.title}
+                text={post.body}
+                userId={user.id}
+                postId={post.id}
+              />
             ))}
           </>
         ) : null}

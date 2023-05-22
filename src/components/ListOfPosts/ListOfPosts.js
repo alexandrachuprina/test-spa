@@ -10,13 +10,19 @@ function ListOfPosts() {
 
   useEffect(() => {
     dispatch(getPosts());
-    dispatch(getComments())
+    dispatch(getComments());
   }, []);
 
   return (
     <>
       {posts.map((elem) => (
-        <Post title={elem.title} text={elem.body} userId={elem.userId} postId={elem.id} key={elem.id}/>
+        <Post
+          title={elem.title}
+          text={elem.body}
+          userId={elem.userId}
+          postId={elem.id}
+          key={elem.id}
+        />
       ))}
     </>
   );

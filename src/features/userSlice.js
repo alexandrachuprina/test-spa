@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   id: 0,
@@ -13,7 +13,6 @@ const userSlice = createSlice({
   reducers: {
     setUserId: (state, action) => {
       state.id = action.payload;
-      // console.log(action.payload);
     },
     getUsersData: (state) => {
       state.isLoading = true;
@@ -24,12 +23,12 @@ const userSlice = createSlice({
     },
     setUserData: (state, action) => {
       state.user = state.data.find((user) => user.id === action.payload);
-      // console.log(current(state.user))
-    }
+    },
   },
 });
 
-export const { setUserId, getUsersData, getUsersDataSuccess, setUserData} = userSlice.actions;
+export const { setUserId, getUsersData, getUsersDataSuccess, setUserData } =
+  userSlice.actions;
 
 export const selectUserId = (state) => state.user.id;
 export const selectUser = (state) => state.user.user;

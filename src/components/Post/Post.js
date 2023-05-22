@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getPostId, getComments } from "../../features/commentsSlice";
+import { getPostId } from "../../features/commentsSlice";
 import { setUserData } from "../../features/userSlice";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import Comment from "../Comment/Comment";
 import Photo from "../Photo/Photo";
-import { Col, Spinner } from "react-bootstrap";
+import { Spinner, Card, Button } from "react-bootstrap";
 
 function Post({ title, text, userId, postId }) {
   const allComments = useSelector((state) => state.comments.comments);

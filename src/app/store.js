@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postsReducer from "../features/postsSlice";
-import commentsReducer from '../features/commentsSlice';
-import userReducer from '../features/userSlice';
+import commentsReducer from "../features/commentsSlice";
+import userReducer from "../features/userSlice";
 
 import createSagaMiddleware from "redux-saga";
 import postsSaga from "../features/postsSaga";

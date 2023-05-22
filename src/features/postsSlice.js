@@ -1,12 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   posts: [],
   isLoading: false,
-}
+};
 
 export const postsSlice = createSlice({
-  name: 'posts',
+  name: "posts",
   initialState,
   reducers: {
     getPosts: (state) => {
@@ -20,9 +20,9 @@ export const postsSlice = createSlice({
       state.isLoading = false;
     },
   },
-})
+});
 
-export const { getPosts, getPostsSuccess, getPostsFailure } = postsSlice.actions;
+export const { getPosts, getPostsSuccess, getPostsFailure } =
+  postsSlice.actions;
 
 export default postsSlice.reducer;
-
