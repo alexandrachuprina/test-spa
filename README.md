@@ -1,4 +1,4 @@
-# Блог (тестовое задние)
+# Simple blog 
 
 ## Created with: 
 1. React.js (JavaScript)
