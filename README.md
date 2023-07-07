@@ -1,7 +1,5 @@
 # Блог (тестовое задние)
 
-Work in progress 
-
 ## Created with: 
 1. React.js (JavaScript)
 2. Redux Toolkit

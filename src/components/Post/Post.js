@@ -25,7 +25,7 @@ function Post({ title, text, userId, postId }) {
   };
 
   return (
-    <Col xs={10} sm={6} lg={4}>
+    // <Col xs={10} sm={6} lg={10}>
       <Card style={{width: '100%', margin: "2vh 0" }}>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
@@ -68,7 +68,7 @@ function Post({ title, text, userId, postId }) {
           </Card.Body>
         </Card.Body>
       </Card>
-    </Col>
+    // </Col>
   );
 }
 
