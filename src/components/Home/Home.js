@@ -13,8 +13,10 @@ function Home() {
 
   return (
     <Container>
-      <Row>
-        <ListOfPosts />
+      <Row >
+        <Col lg={8}>
+          <ListOfPosts />
+        </Col>
       </Row>
     </Container>
   );
