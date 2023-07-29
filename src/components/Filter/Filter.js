@@ -26,6 +26,7 @@ const Filter = () => {
   };
 
   const showChoosenMobile = () => {
+    // e.preventDefault();
     const userId = document.getElementById("user-select-mobile").value;
     dispatch(filterPosts(Number(userId)));
     window.scrollTo(0, 0);
@@ -35,6 +36,18 @@ const Filter = () => {
   };
 
   const findWord = (e) => {
+    if (e.target.value != "") {
+      setWord(e.target.value);
+      dispatch(filterByWord(e.target.value));
+    } else {
+      setWord("");
+      dispatch(filterByWord(""));
+    }
+    window.scrollTo(0, 0);
+  };
+
+  const findWordMobile = (e) => {
+    e.preventDefault()
     if (e.target.value != "") {
       setWord(e.target.value);
       dispatch(filterByWord(e.target.value));
@@ -91,7 +104,7 @@ const Filter = () => {
         </div>
         <div className="search">
           <p>Поиск по cодержанию</p>
-          <Input type="text" value={word} onChange={findWord} />
+          <Input type="text" value={word} onChange={(e) => findWord(e)} />
         </div>
         {modalShown && (
           <ModalCard>
