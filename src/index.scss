@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,4 +12,15 @@ h2,
 p {
   padding: 0;
   margin: 0;
+}
+
+:root {
+  --black: #000000;
+  --white: #FFFFFF;
+  --medium-gray: #CDCDCD;
+
+  --bg: #0e1117; 
+  --dark-bg: #02040a;
+  --light: rgb(48, 54, 61);
+  --medium-light: #7c8590;
 }

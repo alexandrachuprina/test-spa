@@ -1,71 +1,57 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { selectUser } from "../../features/userSlice";
-import { useSelector } from "react-redux";
-import { Button, Card, Row, Col, Container, ListGroup } from "react-bootstrap";
-import PostByUser from "./PostByUser";
+import React from "react";
+import { BasicCard } from "../../styles/UI-kit";
+import { styled } from "styled-components";
+import { queries } from "../../styles/UI-kit";
 
-function User() {
-  const [postsByUser, setPostsByUser] = useState([]);
-  const [showPosts, setShowPosts] = useState(false);
-  const { id } = useParams();
-  const user = useSelector(selectUser);
-  const posts = useSelector((state) => state.posts.posts);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const filtredPosts = posts.filter((post) => post.userId === user.id);
-    setPostsByUser(filtredPosts);
-  }, []);
-
+function User({ name, email, phone, id }) {
   return (
-    <Container>
-      <Row>
-        <Col xl={6}>
-          <Button
-            variant="primary"
-            onClick={() => navigate(-1)}
-            style={{ margin: "50px 0" }}
-          >
-            Вернуться назад
-          </Button>
-          <Card style={{ width: "400px" }}>
-            <Card.Body>
-              <Card.Title>Информация о пользователе</Card.Title>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroup.Item>Имя: {user.name}</ListGroup.Item>
-              <ListGroup.Item>Почта: {user.email}</ListGroup.Item>
-              <ListGroup.Item>Телефон: {user.phone}</ListGroup.Item>
-            </ListGroup>
-            <Card.Body>
-              <Button
-                variant="primary"
-                onClick={() => setShowPosts(!showPosts)}
-              >
-                Посты {user.username}
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        {showPosts ? (
-          <>
-            {postsByUser.map((post, i) => (
-              <PostByUser
-                key={i}
-                title={post.title}
-                text={post.body}
-                userId={user.id}
-                postId={post.id}
-              />
-            ))}
-          </>
-        ) : null}
-      </Row>
-    </Container>
+    <Card>
+      <div>
+        <h2>{name}</h2>
+        <p>Email: {email}</p>
+        <p>Телефон: {phone}</p>
+      </div>
+
+      <p className="showOnHover">Подробнее о {name}</p>
+    </Card>
   );
 }
 
 export default User;
+
+const Card = styled(BasicCard)`
+  min-height: 180px;
+  height: 180px;
+  h2 {
+    font-size: 18px;
+    color: ${(p) => p.theme.primaryLight};
+  }
+  p {
+    font-size: 14px;
+    margin: 0;
+    color: ${(p) => p.theme.primaryMedium};
+  }
+  .showOnHover {
+    opacity: 0;
+    color: ${(p) => p.theme.primaryLight};
+  }
+
+  &:hover {
+    .showOnHover {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+  }
+
+  ${(p) =>
+    p.theme.black === "true" && {
+      border: `1px solid ${p.theme.primary}`,
+    }}
+
+  @media (${queries.sm} <= width < ${queries.xl}) {
+    width: 270px;
+  }
+  @media (${queries.xl} <= width) {
+    width: 300px;
+  }
+`;

@@ -11,15 +11,15 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUserId: (state, action) => {
-      state.id = action.payload;
-    },
     getUsersData: (state) => {
       state.isLoading = true;
     },
     getUsersDataSuccess: (state, action) => {
       state.data = action.payload;
       state.isLoading = false;
+    },
+    setUserId: (state, action) => {
+      state.id = action.payload;
     },
     setUserData: (state, action) => {
       state.user = state.data.find((user) => user.id === action.payload);
@@ -32,5 +32,6 @@ export const { setUserId, getUsersData, getUsersDataSuccess, setUserData } =
 
 export const selectUserId = (state) => state.user.id;
 export const selectUser = (state) => state.user.user;
+export const selectUsersData = (state) => state.user.data;
 
 export default userSlice.reducer;

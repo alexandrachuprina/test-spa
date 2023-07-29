@@ -1,24 +1,41 @@
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "react-bootstrap";
-import Layout from "../src/components/Layout/Layout";
-import Home from "../src/components/Home/Home";
-import About from "../src/components/About/About";
-import User from "./components/User/User";
+import { useDispatch } from "react-redux";
+import { getPosts } from "./features/postsSlice";
+import { getComments } from "./features/commentsSlice";
+import { getTodos } from "./features/todosSlice";
+
+import Layout from "./pages/Layout/Layout";
+import Home from "./pages/Home/Home";
+import Users from "./pages/Users/Users";
+import About from "./pages/About/About";
+import { getUsersData } from "./features/userSlice";
+import ChoosenUser from "./components/ChoosenUser/ChoosenUser";
+import NoMatch from "./components/NoMatch/NoMatch";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+    dispatch(getComments());
+    dispatch(getUsersData());
+    dispatch(getTodos());
+  }, []);
+
   return (
-    <ThemeProvider
-      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-      minBreakpoint="xxs"
-    >
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          {/* <Route path="about" element={<About />} /> */}
-          <Route path='/:id' element={<User/>}/>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/users">
+          <Route index element={<Users />} />
+          <Route path=":index" element={<ChoosenUser />} />
         </Route>
-      </Routes>
-    </ThemeProvider>
+        <Route path="*" element={<NoMatch />} />
+      </Route>
+    </Routes>
   );
 }
 

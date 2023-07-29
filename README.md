@@ -1,12 +1,11 @@
-# Simple blog 
+# Simple blog (SPA)
 
-Watch live: https://simple-blog-spa.netlify.app/
+Деплой: https://simple-blog-spa.netlify.app/
 
-## Created with: 
+## Технологический стек
 1. React.js (JavaScript)
 2. Redux Toolkit
 3. Redux Saga
-4. Bootstrap 
-5. React Router 
-6. Axios
-7. JSON Placeholder
+4. React Router 
+5. Axios
+6. Styled Components
