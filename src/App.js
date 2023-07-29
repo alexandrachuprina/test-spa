@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -15,7 +15,16 @@ import ChoosenUser from "./components/ChoosenUser/ChoosenUser";
 import NoMatch from "./components/NoMatch/NoMatch";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+
+  const loader = document.getElementById("loader");
+  if (loader) {
+    setTimeout(() => {
+      loader.style.display = "none";
+      setIsLoading(false);
+    }, 4000);
+  }
 
   useEffect(() => {
     dispatch(getPosts());
@@ -25,17 +34,21 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/users">
-          <Route index element={<Users />} />
-          <Route path=":index" element={<ChoosenUser />} />
-        </Route>
-        <Route path="*" element={<NoMatch />} />
-      </Route>
-    </Routes>
+    <>
+      {!isLoading && (
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/users">
+              <Route index element={<Users />} />
+              <Route path=":index" element={<ChoosenUser />} />
+            </Route>
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+        </Routes>
+      )}
+    </>
   );
 }
 
