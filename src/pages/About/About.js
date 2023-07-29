@@ -48,6 +48,18 @@ const Wrapper = styled.div`
     font-size: 20px;
   }
 
+  @media (width < ${queries.sm}) {
+    .text {
+      width: 100%;
+    }
+    padding: 0 20px;
+  }
+  @media (${queries.sm} <= width < ${queries.xl}) {
+    .text {
+      width: 100%;
+    }
+    padding: 0 80px;
+  }
   @media (${queries.xl} <= width) {
     max-width: 1600px;
   }
