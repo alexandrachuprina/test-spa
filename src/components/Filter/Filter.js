@@ -252,7 +252,7 @@ const position = keyframes`
   }
 
   to {
-    top: 40px;
+    top: 20vh;
   }
 `;
 
@@ -261,7 +261,7 @@ const ModalCard = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 96vh;
+  height: 80vh;
   padding: 20px;
 
   overflow: scroll;

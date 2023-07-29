@@ -197,8 +197,9 @@ const Buttons = styled.div`
 `;
 
 const ButtonsMobile = styled.div`
+  z-index: 50;
   position: fixed;
-  top: 89vh;
+  top: 80vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

@@ -232,6 +232,9 @@ const NavWrapper = styled.div`
       borderBottom: `1px solid ${p.theme.primary}`,
     }}
 
+  @media (width < ${queries.sm}) {
+    padding-top: 20px;
+  }
   @media (${queries.xl} <= width) {
     display: flex;
     flex-direction: column;
