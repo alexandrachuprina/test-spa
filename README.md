@@ -1,5 +1,7 @@
 # Simple blog (SPA)
 
+## Work in progress
+
 Деплой: https://simple-blog-spa.netlify.app/
 
 ## Технологический стек
