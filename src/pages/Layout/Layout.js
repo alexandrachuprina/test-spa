@@ -4,7 +4,7 @@ import { Outlet, NavLink } from "react-router-dom";
 import { styled, ThemeProvider } from "styled-components";
 import { setDarkTheme, setLightTheme } from "../../features/themeSlice";
 import { queries } from "../../styles/UI-kit";
-import { filterByWord } from "../../features/postsSlice";
+// import { filterByWord } from "../../features/postsSlice";
 
 function Layout() {
   const [dark, setDark] = useState(true);
@@ -38,7 +38,7 @@ function Layout() {
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
-              onClick={() => dispatch(filterByWord(""))}
+              // onClick={() => dispatch(filterByWord(""))}
             >
               Все авторы
             </NavLink>

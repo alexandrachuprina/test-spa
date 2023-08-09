@@ -1,27 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectUsersData } from "../../features/userSlice";
 import { styled } from "styled-components";
 import User from "../User/User";
 import { queries } from "../../styles/UI-kit";
 
 const ListOfUsers = () => {
-  const users = useSelector(selectUsersData);
+  // const users = useSelector(selectUsersData);
 
   return (
-    <Users>
-      {users.map((user, index) => (
-        <UserLink to={`/users/${index}`}>
-          <User
-            id={user.id}
-            name={user.name}
-            phone={user.phone}
-            email={user.email}
-          />
-        </UserLink>
-      ))}
-    </Users>
+    // <Users>
+    //   {users.map((user, index) => (
+    //     <UserLink to={`/users/${index}`}>
+    //       <User
+    //         id={user.id}
+    //         name={user.name}
+    //         phone={user.phone}
+    //         email={user.email}
+    //       />
+    //     </UserLink>
+    //   ))}
+    // </Users>
+    <>users</>
   );
 };
 

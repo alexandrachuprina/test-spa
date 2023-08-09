@@ -6,7 +6,7 @@ import { queries } from "../../styles/UI-kit";
 const Users = () => {
   return (
     <Wrapper>
-      <ListOfUsers />
+      {/* <ListOfUsers /> */}
     </Wrapper>
   );
 };

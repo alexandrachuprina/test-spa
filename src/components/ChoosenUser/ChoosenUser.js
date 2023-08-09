@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { selectUsersData } from "../../features/userSlice";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
 import Post from "../Post/Post";
@@ -9,7 +8,8 @@ import { queries } from "../../styles/UI-kit";
 
 const ChoosenUser = () => {
   const { index } = useParams();
-  const users = useSelector(selectUsersData);
+  const users = []
+  // const users = useSelector(selectUsersData);
   const user = users[index];
 
   const posts = useSelector((state) => state.posts.posts);
