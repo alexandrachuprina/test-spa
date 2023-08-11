@@ -9,6 +9,8 @@ const initialState = {
     },
   ],
   isLoading: false,
+  isLoadingMore: false,
+  start: 10,
   choosenUserId: 0,
   keyword: "",
 };
@@ -25,12 +27,19 @@ export const postsSlice = createSlice({
     getPostsSuccess: (state, action) => {
       state.posts = action.payload;
       state.isLoading = false;
+      state.isLoadingMore = false;
 
       console.log("all posts");
       console.log(state.posts);
     },
     getPostsFailure: (state) => {
       state.isLoading = false;
+    },
+    getMorePosts: (state, action) => {
+      console.log("loading more posts start");
+
+      state.isLoadingMore = true;
+      state.start = state.start + 10;
     },
     filterPosts: (state, action) => {
       console.log("filter posts by user start");
@@ -41,13 +50,16 @@ export const postsSlice = createSlice({
     filterPostsSuccess: (state, action) => {
       state.posts = action.payload;
       state.isLoading = false;
+      state.isLoadingMore = false;
 
       console.log("posts by user");
       console.log(state.posts);
     },
     filterByWord: (state, action) => {
       console.log("filter posts by word start");
+
       state.keyword = action.payload;
+      state.choosenUserId = 0;
       state.isLoading = true;
     },
     filterByWordSucces: (state, action) => {
@@ -64,6 +76,7 @@ export const {
   getPosts,
   getPostsSuccess,
   getPostsFailure,
+  getMorePosts,
   filterPosts,
   filterPostsSuccess,
   filterByWord,

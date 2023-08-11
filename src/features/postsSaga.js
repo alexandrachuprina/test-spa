@@ -42,27 +42,26 @@ function* getUsers(posts) {
 }
 
 function createCards(posts, comments, users) {
-  const postCard = {
-    post: {},
-    comments: [],
-    user: "",
-  };
-  const postCards = [];
+  let postCards = [];
 
-  if (posts !== [] && comments !== [] && users !== []) {
-    for (let i = 0; i < posts.length; i++) {
-      const post = posts[i];
-      postCard.post = post;
+  for (let i = 0; i < posts.length; i++) {
+    let postCard = {
+      post: {},
+      comments: [],
+      user: "",
+    };
 
-      const comment = comments[i];
-      postCard.comments = comment;
+    const post = posts[i];
+    postCard.post = post;
 
-      const user = users[i];
-      const name = user[0].name;
-      postCard.user = name;
+    const comment = comments[i];
+    postCard.comments = comment;
 
-      postCards.push(postCard);
-    }
+    const user = users[i];
+    const name = user[0].name;
+    postCard.user = name;
+
+    postCards = [...postCards, postCard];
   }
 
   return postCards;
@@ -79,6 +78,8 @@ function* getPosts() {
   const postCards = yield createCards(formattedPosts, comments, users);
 
   yield put(getPostsSuccess(postCards));
+
+  console.log(postCards);
 }
 
 export function* watchPosts() {
@@ -87,9 +88,16 @@ export function* watchPosts() {
 
 function* filterPosts() {
   const user = yield select((state) => state.posts.choosenUserId);
-  const posts = yield call(() =>
-    axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${user}`)
-  );
+  let posts;
+  if (user === 0) {
+    posts = yield call(() =>
+      axios.get(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
+    );
+  } else {
+    posts = yield call(() =>
+      axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${user}`)
+    );
+  }
   const formattedPosts = yield posts.data;
 
   const comments = yield getComments(formattedPosts);
@@ -105,9 +113,18 @@ export function* watchFilterPosts() {
 
 function* searchWord() {
   const keyword = yield select((state) => state.posts.keyword);
-  const posts = yield call(() =>
-    axios.get(`https://jsonplaceholder.typicode.com/posts?body_like=${keyword}`)
-  );
+  let posts;
+  if (keyword === "") {
+    posts = yield call(() =>
+      axios.get(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
+    );
+  } else {
+    posts = yield call(() =>
+      axios.get(
+        `https://jsonplaceholder.typicode.com/posts?body_like=${keyword}`
+      )
+    );
+  }
   const formattedPosts = yield posts.data;
 
   const comments = yield getComments(formattedPosts);
@@ -119,4 +136,32 @@ function* searchWord() {
 
 export function* watchKeyword() {
   yield takeLatest("posts/filterByWord", searchWord);
+}
+
+function* getMorePosts() {
+  const start = yield select((state) => state.posts.start);
+  const newPosts = yield call(() =>
+    axios.get(
+      `https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=10`
+    )
+  );
+  const formattedPosts = yield newPosts.data;
+
+  const comments = yield getComments(formattedPosts);
+  const users = yield getUsers(formattedPosts);
+  const postCards = yield createCards(formattedPosts, comments, users);
+
+  const prevPosts = yield select((state) => state.posts.posts);
+
+  console.log(prevPosts);
+
+  const newCards = [...prevPosts, ...postCards];
+
+  console.log(newCards);
+
+  yield put(getPostsSuccess(newCards));
+}
+
+export function* watchMorePosts() {
+  yield takeEvery("posts/getMorePosts", getMorePosts);
 }
