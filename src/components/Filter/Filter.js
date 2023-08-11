@@ -5,7 +5,7 @@ import {
   filterPosts,
   filterByWord,
   selectKeyword,
-} from "../../features/postsSlice";
+} from "../../app/postsSlice";
 import { Input, Selection, queries } from "../../styles/UI-kit";
 
 const Filter = () => {
@@ -66,7 +66,7 @@ const Filter = () => {
           <SelectOption>
             <p>Автор</p>
             <Selection name="users" id="user-select" onChange={showChoosen}>
-              <option value="">Все авторы</option>
+              <option value="0">Все авторы</option>
               <option value="1">Leanne Graham</option>
               <option value="2">Ervin Howell</option>
               <option value="3">Clementine Bauch</option>

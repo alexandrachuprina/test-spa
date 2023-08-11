@@ -1,7 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  theme: {},
+  theme: {
+    black: "true",
+    main: "var(--bg)",
+    primary: "var(--light)",
+    primaryLight: "var(--white)",
+    primaryMedium: "var(--medium-light)",
+    bg: "var(--bg)",
+    darkBg: "var(--dark-bg)",
+    boxShadow: "none",
+  },
 };
 
 const themeSlice = createSlice({
@@ -10,19 +19,19 @@ const themeSlice = createSlice({
   reducers: {
     setDarkTheme: (state) => {
       state.theme = {
-        black: "true",
+        black: true,
         main: "var(--bg)",
         primary: "var(--light)",
         primaryLight: "var(--white)",
-        primaryMedium: 'var(--medium-light)',
+        primaryMedium: "var(--medium-light)",
         bg: "var(--bg)",
         darkBg: "var(--dark-bg)",
-        boxShadow: 'none',
+        boxShadow: "none",
       };
     },
     setLightTheme: (state) => {
       state.theme = {
-        black: "false",
+        black: false,
         main: "var(--white)",
         primary: "var(--black)",
         primaryLight: "var(--black)",

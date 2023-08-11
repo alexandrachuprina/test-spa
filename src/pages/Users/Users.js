@@ -1,29 +1,21 @@
-import React from "react";
-import { styled } from "styled-components";
+import React, { useEffect } from "react";
 import ListOfUsers from "../../components/ListOfUsers/ListOfUsers";
-import { queries } from "../../styles/UI-kit";
+import { Page } from "./styles";
+import { useDispatch } from "react-redux";
+import { getUsers } from "../../app/usersSlice";
 
 const Users = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
+
   return (
-    <Wrapper>
+    <Page>
       <ListOfUsers />
-    </Wrapper>
+    </Page>
   );
 };
 
 export default Users;
-
-const Wrapper = styled.div`
-  box-sizing: border-box;
-  padding: 0 80px;
-
-  @media (width < ${queries.sm}) {
-    padding: 0 20px;
-  }
-
-  @media (${queries.xl} <= width) {
-    max-width: 1600px;
-    width: 100%;
-    padding: 0;
-  }
-`;

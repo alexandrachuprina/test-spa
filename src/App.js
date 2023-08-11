@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { getPosts } from "./features/postsSlice";
-import { getComments } from "./features/commentsSlice";
-import { getTodos } from "./features/todosSlice";
+import { getPosts } from "./app/postsSlice";
 
 import Layout from "./pages/Layout/Layout";
 import Home from "./pages/Home/Home";
 import Users from "./pages/Users/Users";
 import About from "./pages/About/About";
-import { getUsersData } from "./features/userSlice";
 import ChoosenUser from "./components/ChoosenUser/ChoosenUser";
 import NoMatch from "./components/NoMatch/NoMatch";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const loader = document.getElementById("loader");
   if (loader) {
@@ -27,11 +23,8 @@ function App() {
   }
 
   useEffect(() => {
-    dispatch(getPosts());
-    dispatch(getComments());
-    dispatch(getUsersData());
-    dispatch(getTodos());
-  }, []);
+    dispatch(getPosts())
+  }, [])
 
   return (
     <>
