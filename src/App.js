@@ -11,8 +11,8 @@ import ChoosenUser from "./components/ChoosenUser/ChoosenUser";
 import NoMatch from "./components/NoMatch/NoMatch";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const loader = document.getElementById("loader");
   if (loader) {
@@ -23,8 +23,8 @@ function App() {
   }
 
   useEffect(() => {
-    dispatch(getPosts());
-  }, []);
+    dispatch(getPosts())
+  }, [])
 
   return (
     <>
