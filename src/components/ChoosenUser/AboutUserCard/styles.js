@@ -2,16 +2,12 @@ import { styled } from "styled-components";
 import { queries } from "../../../styles/UI-kit";
 
 export const Card = styled.div`
-  position: fixed;
-  top: 100;
-  left: 100;
-
   width: 390px;
   height: 450px;
   border-radius: 18px;
   padding: 24px 36px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 6px 26px 0px;
+
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -32,6 +28,11 @@ export const Card = styled.div`
     padding: 10px 0 0 0;
     margin: 20px 0 10px 0;
     border-top: 1px solid ${(p) => p.theme.primary};
+  }
+  .text {
+    ::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   ${(p) =>

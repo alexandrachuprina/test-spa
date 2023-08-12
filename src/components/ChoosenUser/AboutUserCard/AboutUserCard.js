@@ -24,7 +24,7 @@ const AboutUserCard = ({
         <p>{zipcode}</p>
         <p className="subtitle">Работа</p>
         <p>Компания: {company}</p>
-        <p>{bs}</p>
+        <p className="text">{bs}</p>
       </div>
     </Card>
   );

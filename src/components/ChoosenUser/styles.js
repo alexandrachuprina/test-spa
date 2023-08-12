@@ -3,28 +3,36 @@ import { styled } from "styled-components";
 
 export const Page = styled.div`
   padding: 0 80px;
+
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: 80px;
   width: 100%;
+  padding-bottom: 160px;
+
+  .title {
+    padding-left: 40px;
+    font-size: 24px;
+    color: ${(p) => p.theme.primaryLight};
+    margin-bottom: 30px;
+  }
 
   @media (width < ${queries.sm}) {
     padding: 0 20px;
   }
-  @media (width <= ${queries.l}) {
+  /* @media (width <= ${queries.l}) {
     flex-direction: column;
-  }
+  } */
 
   @media (${queries.xl} <= width) {
     max-width: 1600px;
   }
 `;
 
-
 export const Content = styled.div`
-  margin-left: 480px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   column-gap: 40px;
 
@@ -50,34 +58,17 @@ export const Content = styled.div`
   }
 `;
 
-export const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+export const Posts = styled.div`
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  justify-content: space-between;
+  column-gap: 4%;
   row-gap: 40px;
   padding: 20px 0;
 
-  overflow: scroll;
-  overflow-y: scroll;
-  min-width: 400px;
-
-  height: 72vh;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.08);
-  }
-
   @media (width <= ${queries.l}) {
-    min-width: auto;
+    /* min-width: auto;
 
     overflow: auto;
     overflow-y: auto;
@@ -85,6 +76,15 @@ export const List = styled.div`
     justify-content: center;
 
     width: 100%;
-    height: fit-content;
+    height: fit-content; */
   }
 `;
+
+export const Todos = styled.div`
+
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  justify-content: space-between;
+  column-gap: 4%;
+  row-gap: 40px;
+`

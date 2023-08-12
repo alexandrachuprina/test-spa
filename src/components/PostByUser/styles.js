@@ -2,11 +2,10 @@ import { styled } from "styled-components";
 import { queries } from "../../styles/UI-kit";
 
 export const Post = styled.div`
-  height: fit-content;
-  width: 340px;
+  height: 260px;
+  width: 100%;
 
   background-color: transparent;
-  height: fit-content;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 6px 26px 0px;
   padding: 18px;
