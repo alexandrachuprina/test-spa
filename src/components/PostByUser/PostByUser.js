@@ -4,8 +4,8 @@ import { Post } from "./styles";
 const PostByUser = ({ title, text }) => {
   return (
     <Post>
-      <h2>{title}</h2>
-      <p>{text}</p>
+      <h2 className="text">{title}</h2>
+      <p className="text">{text}.</p>
     </Post>
   );
 };

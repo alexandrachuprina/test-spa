@@ -3,6 +3,22 @@ import css from "styled-components";
 import { queries } from "../../styles/UI-kit";
 
 export const Card = styled.div`
+  ${(p) =>
+    p.theme.black && {
+      boxShadow: "none",
+      border: `1px solid ${p.theme.primary}`,
+    }}
+
+  h2 {
+    color: ${(p) => p.theme.primaryLight};
+  }
+  p {
+    color: ${(p) => p.theme.primaryMedium};
+  }
+  .user {
+    color: ${(p) => p.theme.primaryLight};
+  }
+
   ${(props) =>
     props.view === "large" &&
     `
@@ -21,14 +37,9 @@ export const Card = styled.div`
 
       h2 {
         font-size: 24px;
-        color: ${(p) => p.theme.primaryLight};
-      }
-      p {
-        color: ${(p) => p.theme.primaryMedium};
       }
       .user {
         margin-left: 6px;
-        color: ${(p) => p.theme.primaryLight};
       }
       .text {
         &::first-letter {
@@ -51,14 +62,7 @@ export const Card = styled.div`
 
       &:hover {
         scale: 1.05;
-        box-shadow: ${(p) => p.theme.boxShadow};
       }
-
-      ${(p) =>
-        p.theme.black === "true" && {
-          border: `1px solid ${p.theme.primary}`,
-          boxShadow: "none",
-        }}
 
       @media (width <= ${queries.sm}) {
         h2 {
@@ -100,7 +104,6 @@ export const Card = styled.div`
       }
       .user {
         margin-left: 6px;
-        color: ${(p) => p.theme.primaryLight};
       }
       .comments {
         display: none;
@@ -122,14 +125,14 @@ export const Card = styled.div`
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-end;
+      border-radius: 18px;
+      padding: 18px;
 
       h2 {
         font-size: 18px;
-        color: ${(p) => p.theme.primaryLight};
       }
       p {
         font-size: 14px;
-        color: ${(p) => p.theme.primaryMedium};
       }
       .content {
         width: 65%;
@@ -141,7 +144,6 @@ export const Card = styled.div`
       }
       .user {
         margin-left: 6px;
-        color: ${(p) => p.theme.primaryLight};
       }
       .comments {
         display: none;

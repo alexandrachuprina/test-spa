@@ -10,7 +10,7 @@ const List = () => {
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
-        fill={theme.black === "true" ? "var(--white)" : "var(--black)"}
+        fill={theme.primaryLight}
         class="bi bi-list"
         viewBox="0 0 16 16"
       >
