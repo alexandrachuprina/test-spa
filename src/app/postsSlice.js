@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 const initialState = {
   posts: [
@@ -46,6 +47,7 @@ export const postsSlice = createSlice({
 
       state.isLoading = true;
       state.choosenUserId = action.payload;
+      state.keyword = "";
     },
     filterPostsSuccess: (state, action) => {
       state.posts = action.payload;

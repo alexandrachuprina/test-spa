@@ -4,9 +4,9 @@ import { Posts, Card, Buttons, ButtonsMobile, Loading, Inner } from "./styles";
 import { BasicBtn } from "../Post/styles";
 
 import Post from "../Post/Post";
-import Small from "../PostsView/Small";
-import Large from "../PostsView/Large";
-import List from "../PostsView/List";
+import Small from "./icons/Small";
+import Large from "./icons/Large";
+import List from "./icons/List";
 import { getMorePosts } from "../../app/postsSlice";
 
 function ListOfPosts() {

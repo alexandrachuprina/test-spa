@@ -2,8 +2,7 @@ import { styled } from "styled-components";
 import { queries } from "../../styles/UI-kit";
 
 export const Post = styled.div`
-  min-height: 250px;
-  height: 250px;
+  height: fit-content;
   width: 340px;
 
   background-color: transparent;
@@ -19,9 +18,12 @@ export const Post = styled.div`
 
   h2 {
     font-size: 18px;
+    color: ${(p) => p.theme.primaryLight};
+    margin-bottom: 30px;
   }
   p {
     font-size: 14px;
+    color: ${(p) => p.theme.primaryMedium};
   }
   .text {
     &::first-letter {
@@ -35,6 +37,12 @@ export const Post = styled.div`
   .comments {
     display: none;
   }
+
+  ${(p) =>
+    p.theme.black && {
+      boxShadow: "none",
+      border: `1px solid ${p.theme.primary}`,
+    }}
 
   @media (width < ${queries.sm}) {
     p {

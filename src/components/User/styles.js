@@ -27,7 +27,7 @@ export const Card = styled(BasicCard)`
   }
 
   ${(p) =>
-    p.theme.black === "true" && {
+    p.theme.black && {
       border: `1px solid ${p.theme.primary}`,
     }}
 

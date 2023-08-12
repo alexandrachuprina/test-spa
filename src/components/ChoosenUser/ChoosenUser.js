@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo, setIsLoadingUser, setUserId } from "../../app/usersSlice";
-import Post from "../Post/Post";
 import Todo from "../Todo/Todo";
-import { Card, Page, Content, List } from "./styles";
+import { Page, Content, List } from "./styles";
 import PostByUser from "../PostByUser/PostByUser";
+import AboutUserCard from "./AboutUserCard/AboutUserCard";
 
 const ChoosenUser = () => {
   const { index } = useParams();
@@ -37,8 +37,8 @@ const ChoosenUser = () => {
       setLoading(false);
 
       setTimeout(() => {
-        dispatch(setIsLoadingUser())
-      }, 1000)
+        dispatch(setIsLoadingUser());
+      }, 1000);
     }
   }, [isLoading]);
 
@@ -46,21 +46,16 @@ const ChoosenUser = () => {
     <>
       {!loading ? (
         <Page>
-          <Card>
-            <div>
-              <h2>{user.name}</h2>
-              <p className="subtitle">Контакты</p>
-              <p>Email: {user.email}</p>
-              <p>Телефон: {user.phone}</p>
-              <p className="subtitle">Адрес</p>
-              <p>{user.address.street},</p>
-              <p>{user.address.city}</p>
-              <p>{user.address.zipcode}</p>
-              <p className="subtitle">Работа</p>
-              <p>Компания: {user.company.name}</p>
-              <p>{user.company.bs}</p>
-            </div>
-          </Card>
+          <AboutUserCard
+            name={user.name}
+            email={user.email}
+            phone={user.phone}
+            street={user.address.street}
+            city={user.address.city}
+            zipcode={user.address.zipcode}
+            company={user.company.name}
+            bs={user.company.bs}
+          />
           <Content>
             <div>
               <h2 className="title">Публикации</h2>
@@ -78,7 +73,11 @@ const ChoosenUser = () => {
               <h2 className="title">To-do list</h2>
               <List>
                 {todos.map((todo) => (
-                  <Todo key={todo.id} title={todo.title} completed={todo.completed} />
+                  <Todo
+                    key={todo.id}
+                    title={todo.title}
+                    completed={todo.completed}
+                  />
                 ))}
               </List>
             </div>

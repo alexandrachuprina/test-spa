@@ -121,7 +121,7 @@ function* searchWord() {
   } else {
     posts = yield call(() =>
       axios.get(
-        `https://jsonplaceholder.typicode.com/posts?body_like=${keyword}`
+        `https://jsonplaceholder.typicode.com/posts?body_like=${keyword}&_limit=10`
       )
     );
   }
@@ -140,11 +140,21 @@ export function* watchKeyword() {
 
 function* getMorePosts() {
   const start = yield select((state) => state.posts.start);
-  const newPosts = yield call(() =>
-    axios.get(
-      `https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=10`
-    )
-  );
+  const keyword = yield select((state) => state.posts.keyword);
+  let newPosts;
+  if (keyword === "") {
+    newPosts = yield call(() =>
+      axios.get(
+        `https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=10`
+      )
+    );
+  } else {
+    newPosts = yield call(() =>
+      axios.get(
+        `https://jsonplaceholder.typicode.com/posts?body_like=${keyword}&_start=${start}&_limit=10`
+      )
+    );
+  }
   const formattedPosts = yield newPosts.data;
 
   const comments = yield getComments(formattedPosts);
