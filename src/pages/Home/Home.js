@@ -1,13 +1,13 @@
 import React from "react";
 import ListOfPosts from "../../components/ListOfPosts/ListOfPosts";
-import Filter from "../../components/Filter/Filter";
+import Filter from "../../components/Filter/Filter/Filter";
 import { Page } from "./styles";
 
 function Home() {
   
   return (
     <Page>
-      <Filter />
+      <Filter/>
       <ListOfPosts />
     </Page>
   );

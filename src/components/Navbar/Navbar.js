@@ -30,7 +30,6 @@ const Navbar = () => {
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
           }
-          // onClick={() => dispatch(filterByWord(""))}
         >
           Все авторы
         </NavLink>

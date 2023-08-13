@@ -13,10 +13,10 @@ export const Page = styled.div`
     display: flex;
     flex-direction: column;
   }
-  @media (${queries.xxs} <= width <= ${queries.xs}) {
+  @media (${queries.xxs} <= width <= 600px) {
     padding: 0 20px;
   }
-  @media (${queries.xs} < width <= ${queries.sm}) {
+  @media (600px < width <= ${queries.sm}) {
     padding: 0 80px;
   }
   @media (${queries.xl} <= width) {

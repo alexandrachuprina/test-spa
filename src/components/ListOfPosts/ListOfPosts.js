@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Posts, Card, Buttons, ButtonsMobile, Loading, Inner } from "./styles";
-import { BasicBtn } from "../Post/styles";
+import { Posts, Page, Buttons, Column } from "./styles";
+import { BasicBtn } from "../../styles/UI-kit";
 
 import Post from "../Post/Post";
 import Small from "./icons/Small";
 import Large from "./icons/Large";
 import List from "./icons/List";
-import { getMorePosts } from "../../app/postsSlice";
+import PostsSlice, { getMorePosts } from "../../app/postsSlice";
+import { skeletonPosts } from "./skeleton";
+import SkeletonPost from "../SkeletonPost/SkeletonPost";
 
 function ListOfPosts() {
   const posts = useSelector((state) => state.posts.posts);
@@ -18,12 +20,21 @@ function ListOfPosts() {
 
   const [postView, setPostView] = useState("large");
 
+  useEffect(() => {
+    console.log(loading);
+  }, [loading]);
+
   return (
-    <Posts>
-      {!loading ? (
-        <Inner>
-          <Card view={postView}>
-            {posts.map((elem) => (
+    <Page>
+      <Column>
+        <Posts view={postView}>
+          {loading &&
+            skeletonPosts.map((elem) => (
+              <SkeletonPost key={elem} view={postView} loading={loading} />
+            ))}
+
+          {!loading &&
+            posts.map((elem) => (
               <Post
                 key={elem.post.id}
                 postView={postView}
@@ -32,27 +43,19 @@ function ListOfPosts() {
                 postId={elem.post.id}
                 showAuthor={true}
                 user={elem.user}
+                userId={elem.post.userId}
                 comments={elem.comments}
               />
             ))}
-          </Card>
-          {user === 0 && (
-            <>
-              {loadingMore ? (
-                <p>Loading...</p>
-              ) : (
-                <BasicBtn onClick={() => dispatch(getMorePosts())}>
-                  <p>Загрузить ещё</p>
-                </BasicBtn>
-              )}
-            </>
-          )}
-        </Inner>
-      ) : (
-        <Loading>
-          <p>Loading...</p>
-        </Loading>
-      )}
+        </Posts>
+        {user === 0 && loadingMore ? (
+          <p>Загружаем...</p>
+        ) : (
+          <BasicBtn onClick={() => dispatch(getMorePosts())}>
+            <p>Загрузить ещё</p>
+          </BasicBtn>
+        )}
+      </Column>
 
       <Buttons>
         <button className="btn" onClick={() => setPostView("large")}>
@@ -65,7 +68,7 @@ function ListOfPosts() {
           <List />
         </button>
       </Buttons>
-    </Posts>
+    </Page>
   );
 }
 

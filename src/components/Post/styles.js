@@ -1,8 +1,19 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import css from "styled-components";
 import { queries } from "../../styles/UI-kit";
 
+const loading = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 export const Card = styled.div`
+  animation: 1s ${loading};
+
   ${(p) =>
     p.theme.black && {
       boxShadow: "none",
@@ -22,8 +33,9 @@ export const Card = styled.div`
   ${(props) =>
     props.view === "large" &&
     `
-      width: 100%;
-      min-height: 300px;
+      width: 700px;
+      height: 400px;
+
       background-color: transparent;
       height: fit-content;
       border-radius: 18px;
@@ -64,7 +76,8 @@ export const Card = styled.div`
         scale: 1.05;
       }
 
-      @media (width <= ${queries.sm}) {
+      @media (width <= ${queries.xl}) {
+        width: 100%;
         h2 {
           font-size: 18px;
         }
@@ -77,15 +90,14 @@ export const Card = styled.div`
   ${(props) =>
     props.view === "small" &&
     `
-      min-height: 250px;
-      height: 250px;
+      display: flex;
+      width: 320px;
+      height: 260px;
       
       background-color: transparent;
-      height: fit-content;
       border-radius: 18px;
       box-shadow: rgba(0, 0, 0, 0.09) 0px 6px 26px 0px;
       padding: 18px;
-      display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: scale 0.5s, box-shadow 0.5s;
@@ -109,7 +121,8 @@ export const Card = styled.div`
         display: none;
       }
 
-      @media (width < ${queries.sm}) {
+      @media (width <= ${queries.sm}) {
+        width: 100%;
         p {
           font-size: 12px;
         }
@@ -122,9 +135,13 @@ export const Card = styled.div`
     props.view === "list" &&
     `
       display: flex;
+      width: 720px;
+      height: 140px;
+
       flex-direction: row;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.09) 0px 6px 26px 0px;
       border-radius: 18px;
       padding: 18px;
 
@@ -134,16 +151,20 @@ export const Card = styled.div`
       p {
         font-size: 14px;
       }
+      .author {
+        p {
+          font-size: 12px;
+        }
+        align-self: flex-start;
+        margin-bottom: auto;
+      }
       .content {
-        width: 65%;
+        width: 70%;
       }
       .text {
         &::first-letter {
           text-transform: uppercase;
         }
-      }
-      .user {
-        margin-left: 6px;
       }
       .comments {
         display: none;
@@ -157,39 +178,4 @@ export const Card = styled.div`
         }
       }
     `}
-`;
-
-export const BasicBtn = styled.button`
-  all: unset;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 6px 12px;
-  width: fit-content;
-  border-radius: 999px;
-  p {
-    font-size: 16px;
-    color: ${(p) => p.theme.primary};
-    padding: 0 10px;
-    margin: 0;
-  }
-`;
-
-export const AuthorsCard = styled.div`
-  min-height: 100px;
-  height: fit-content;
-  position: relative;
-  width: auto;
-
-  &:hover {
-    scale: 1;
-    box-shadow: none;
-    border: none;
-  }
-
-  @media (${queries.l} <= width) {
-    min-height: 180px;
-  }
 `;
