@@ -161,7 +161,7 @@ export const Card = styled.div`
         width: 70%;
       }
       .user {
-        margin-left: 3px;
+        margin-left: 4px;
       }
       .text {
         &::first-letter {

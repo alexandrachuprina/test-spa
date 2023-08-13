@@ -33,28 +33,21 @@ export const Card = styled.div`
     props.view === "large" &&
     `
       display: flex;
-      // width: 700px;
       height: 400px;
+      width: 100%;
 
       background-color: transparent;
       border-radius: 18px;
       box-shadow: rgba(0, 0, 0, 0.09) 0px 6px 26px 0px;
       cursor: pointer;
-
-      @media (width <= ${queries.l}) {
-        width: 100%;
-      }
-      @media (${queries.l} < width) {
-        width: 100%;
-      }
     `}
 
   ${(props) =>
     props.view === "small" &&
     `
       display: flex;
-      // width: 100%;
       height: 260px;
+      width: 100%;
       
       background-color: transparent;
       border-radius: 18px;
@@ -62,8 +55,6 @@ export const Card = styled.div`
       cursor: pointer;
 
       @media (width < ${queries.l}) {
-        width: 100%;
-
         p {
           font-size: 12px;
         }
@@ -76,8 +67,8 @@ export const Card = styled.div`
     props.view === "list" &&
     `
       display: flex;
-      width: 720px;
-      height: 140px;
+      height: 70px;
+      width: 100%;
 
       flex-direction: row;
       justify-content: space-between;
@@ -87,7 +78,6 @@ export const Card = styled.div`
       padding: 18px;
 
       @media (width <= ${queries.xl}) {
-        width: 100%;
         flex-direction: column;
         .content {
           width: 100%;

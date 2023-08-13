@@ -72,16 +72,12 @@ export const Posts = styled.div`
       display: flex;
       flex-direction: column;
       row-gap: 50px;
-
-      @media (${queries.xxs} <= width <= ${queries.sm}) {
-        width: 100%;
-      }
     `}
 
   ${(props) =>
     props.view === "small" &&
     `
-      width: auto;
+      width: 100%;
       display: grid;
       grid-template-columns: 48% 48%;
       justify-content: space-between;
@@ -102,10 +98,6 @@ export const Posts = styled.div`
       display: flex;
       flex-direction: column;
       row-gap: 50px;
-
-      @media (width <= ${queries.sm}) {
-        width: 100%;
-      }
     `}
 `;
 
