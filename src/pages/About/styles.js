@@ -11,34 +11,10 @@ export const Page = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
 
-  .text {
-    width: 80%;
-    h2,
-    .subheader {
-      color: ${p => p.theme.primaryLight}
-    }
-    p {
-      color: ${p => p.theme.primaryMedium}
-    }
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-  .subheader {
-    font-size: 20px;
-  }
-
-  @media (width < ${queries.sm}) {
-    .text {
-      width: 100%;
-    }
+  @media (width < ${`600px`}) {
     padding: 0 20px;
   }
-  @media (${queries.sm} <= width < ${queries.xl}) {
-    .text {
-      width: 100%;
-    }
+  @media (${`600px`} <= width < ${queries.xl}) {
     padding: 0 80px;
   }
   @media (${queries.xl} <= width) {

@@ -27,11 +27,6 @@ export const Nav = styled.div`
   }
 
   @media (width < ${queries.xs}) {
-    padding: 0 20px;
-    height: 100px;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
     a {
       font-size: 14px;
     }
@@ -41,18 +36,15 @@ export const Nav = styled.div`
       font-size: 18px;
     }
   }
-  @media (${queries.xxs} <= width <= ${`425px`}) {
-    .nav-items {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
+  @media (width < ${`600px`}) {
+    height: 100px;
+    padding: 0 20px;
+
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
   }
-  @media (${queries.xs} < width < ${queries.sm}) {
-    justify-content: flex-start;
-  }
-  @media (${queries.sm} <= width <= ${queries.l}) {
+  @media (${`600px`} <= width <= ${queries.l}) {
     height: 80px;
     padding: 0 80px;
   }
@@ -78,4 +70,3 @@ export const Icon = styled.div`
   margin: 0 12px;
   cursor: pointer;
 `;
-

@@ -5,11 +5,9 @@ import Comment from "../Comment/Comment";
 
 import { Card } from "./styles";
 
-function Post({ title, text, postId, postView, showAuthor, user, comments }) {
+function Post({ title, text, postView, user, userId, comments }) {
   const loading = useSelector((state) => state.posts.isLoading);
   const keyword = useSelector((state) => state.posts.keyword);
-
-  const [index, setIndex] = useState();
 
   const showHighlight = (higlight, text) => {
     if (higlight != "") {
@@ -42,15 +40,20 @@ function Post({ title, text, postId, postView, showAuthor, user, comments }) {
         <Card view={postView}>
           <div className="content">
             <h2 className="text">{title}</h2>
-            <p className="text">{showHighlight(keyword, text)}.</p>
+            {postView !== "list" && (
+              <p className="text">{showHighlight(keyword, text)}.</p>
+            )}
           </div>
 
-          <p>
-            post by
-            <Link to={`/users/${index}`} className="user">
-              {user ? user : null}
-            </Link>
-          </p>
+          <div className="author">
+            <p>
+              post by
+              {/* {postView === "list" && <br />} */}
+              <Link to={`/users/${userId}`} className="user">
+                {user ? user : null}
+              </Link>
+            </p>
+          </div>
 
           <div className="comments">
             {comments.map((elem) => (

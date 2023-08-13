@@ -1,8 +1,19 @@
-import { styled } from "styled-components";
+import { keyframes, styled } from "styled-components";
 import { queries } from "../../styles/UI-kit";
 import { BasicCard } from "../../styles/UI-kit";
 
+const loading = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 export const Card = styled(BasicCard)`
+  animation: 1s ${loading};
+
   min-height: 180px;
   height: 180px;
   h2 {

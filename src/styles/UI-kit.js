@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import keyframes from "styled-components";
 
 export const BasicCard = styled.div`
   width: 100%;
@@ -32,6 +33,24 @@ export const BasicCard = styled.div`
       border: `1px solid ${p.theme.primary}`,
       boxShadow: "none",
     }}
+`;
+
+export const BasicBtn = styled.button`
+  all: unset;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 12px;
+  width: fit-content;
+  border-radius: 999px;
+  border: 1px solid ${(p) => p.theme.primary};
+  p {
+    font-size: 16px;
+    color: ${(p) => p.theme.primaryMedium};
+    padding: 0 10px;
+    margin: 0;
+  }
 `;
 
 export const Input = styled.input`
@@ -70,3 +89,9 @@ export const queries = {
   l: `1024px`,
   xl: `1200px`,
 };
+
+export const skeletonGradient = keyframes`
+to {
+  background-position-x: -200%;
+}
+`;

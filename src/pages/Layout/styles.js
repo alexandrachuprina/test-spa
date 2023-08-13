@@ -1,5 +1,5 @@
 import { queries } from "../../styles/UI-kit";
-import { styled, ThemeProvider } from "styled-components";
+import { styled } from "styled-components";
 
 
 export const PagesWrapper = styled.div`

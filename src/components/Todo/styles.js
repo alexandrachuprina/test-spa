@@ -4,24 +4,21 @@ import { BasicCard } from "../../styles/UI-kit";
 
 export const Card = styled(BasicCard)`
   min-height: 60px;
-  height: fit-content;
-  width: 88%;
+  height: 100px;
+  /* width: auto; */
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  h2 {
-    font-size: 16px;
+
+  p {
+    font-size: 14px;
     width: 80%;
     margin: 0;
     color: ${(p) => p.theme.primaryLight};
     &::first-letter {
       text-transform: capitalize;
     }
-  }
-  p {
-    font-size: 12px;
-    color: ${(p) => p.theme.primary};
   }
 
   &:hover {

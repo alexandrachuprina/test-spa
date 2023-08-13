@@ -2,29 +2,32 @@ import { styled } from "styled-components";
 import css from "styled-components";
 import { queries } from "../../styles/UI-kit";
 
-export const Posts = styled.div`
+export const Page = styled.div`
   margin-bottom: 60px;
 
   position: relative;
   margin-left: 480px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 
-  @media (${queries.xxs} <= width <= ${queries.sm}) {
+  @media (${queries.xxs} <= width <= ${queries.l}) {
     margin-left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  @media (${queries.sm} < width <= ${queries.xl}) {
+  @media (${queries.l} < width <= ${queries.xl}) {
     margin-left: 380px;
   }
 `;
 
 export const Buttons = styled.div`
-  position: absolute;
-  left: 95%;
+  /* position: fixed;
+  left: 90%; */
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -32,7 +35,7 @@ export const Buttons = styled.div`
     margin-bottom: 20px;
   }
 
-  @media (${queries.xxs} <= width <= ${queries.sm}) {
+  @media (${queries.xxs} <= width <= ${queries.l}) {
     left: auto;
 
     z-index: 50;
@@ -52,20 +55,20 @@ export const Buttons = styled.div`
       margin-bottom: 0px;
     }
 
-    @media (width < ${queries.sm}) {
-      width: 60vw;
+    @media (width <= ${queries.sm}) {
+      width: 55vw;
     }
-    @media (${queries.xs} < width <= ${queries.sm}) {
+    @media (${queries.sm} < width <= ${queries.l}) {
       width: 30vw;
     }
   }
 `;
 
-export const Card = styled.div`
+export const Posts = styled.div`
   ${(props) =>
     props.view === "large" &&
     `
-      width: 85%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       row-gap: 50px;
@@ -78,16 +81,14 @@ export const Card = styled.div`
   ${(props) =>
     props.view === "small" &&
     `
-      width: 85%;
+      width: auto;
       display: grid;
       grid-template-columns: 48% 48%;
       justify-content: space-between;
+      column-gap: 4%;
       row-gap: 50px;
 
-      @media (${queries.xxs} <= width <= ${queries.sm}) {
-        width: 100%;
-      }
-      @media (width < ${queries.xl}) {
+      @media (width <= ${queries.l}) {
         display: flex;
         flex-direction: column;
         row-gap: 30px;
@@ -97,10 +98,10 @@ export const Card = styled.div`
   ${(props) =>
     props.view === "list" &&
     `
-      width: 85%;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      row-gap: 25px;
+      row-gap: 50px;
 
       @media (width <= ${queries.sm}) {
         width: 100%;
@@ -108,15 +109,15 @@ export const Card = styled.div`
     `}
 `;
 
-export const Loading = styled.div`
+export const Column = styled.div`
+  width: 90%;
   position: relative;
-  margin-left: 300px;
-  display: flex;
-`;
-
-export const Inner = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 100px;
   align-items: center;
+
+  @media (width <= ${queries.l}) {
+    width: 100%;
+  }
 `;

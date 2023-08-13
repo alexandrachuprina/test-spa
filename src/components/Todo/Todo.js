@@ -10,7 +10,7 @@ const Todo = ({ title, completed }) => {
   const theme = useSelector((state) => state.theme.theme);
   return (
     <Card>
-      <h2>{title}</h2>
+      <p>{title}</p>
       {theme.black ? (
         <>{completed ? <>{darkChecked}</> : <>{darkNotChecked}</>}</>
       ) : (

@@ -20,6 +20,7 @@ const themeSlice = createSlice({
     setDarkTheme: (state) => {
       state.theme = {
         black: true,
+        light: false,
         main: "var(--bg)",
         primary: "var(--light)",
         primaryLight: "var(--white)",
@@ -32,6 +33,7 @@ const themeSlice = createSlice({
     setLightTheme: (state) => {
       state.theme = {
         black: false,
+        light: true,
         main: "var(--white)",
         primary: "var(--black)",
         primaryLight: "var(--black)",

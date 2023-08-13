@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo, setIsLoadingUser, setUserId } from "../../app/usersSlice";
 import Todo from "../Todo/Todo";
-import { Page, Content, List } from "./styles";
+import { Page, Content, Posts, Todos } from "./styles";
 import PostByUser from "../PostByUser/PostByUser";
 import AboutUserCard from "./AboutUserCard/AboutUserCard";
 
@@ -56,10 +56,10 @@ const ChoosenUser = () => {
             company={user.company.name}
             bs={user.company.bs}
           />
-          <Content>
+          {/* <Content> */}
             <div>
               <h2 className="title">Публикации</h2>
-              <List>
+              <Posts>
                 {posts.map((post) => (
                   <PostByUser
                     key={post.id}
@@ -67,11 +67,11 @@ const ChoosenUser = () => {
                     text={post.post.body}
                   />
                 ))}
-              </List>
+              </Posts>
             </div>
             <div>
               <h2 className="title">To-do list</h2>
-              <List>
+              <Todos>
                 {todos.map((todo) => (
                   <Todo
                     key={todo.id}
@@ -79,9 +79,9 @@ const ChoosenUser = () => {
                     completed={todo.completed}
                   />
                 ))}
-              </List>
+              </Todos>
             </div>
-          </Content>
+          {/* </Content> */}
         </Page>
       ) : (
         <p>Loading...</p>

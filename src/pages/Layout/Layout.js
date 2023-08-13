@@ -15,7 +15,7 @@ function Layout() {
         <Navbar />
       </NavWrapper>
 
-      <PagesWrapper theme={theme}>
+      <PagesWrapper>
         <Outlet />
       </PagesWrapper>
     </ThemeProvider>
