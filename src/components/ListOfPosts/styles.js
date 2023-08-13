@@ -9,22 +9,24 @@ export const Page = styled.div`
   margin-left: 480px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 
-  @media (${queries.xxs} <= width <= ${queries.sm}) {
+  @media (${queries.xxs} <= width <= ${queries.l}) {
     margin-left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  @media (${queries.sm} < width <= ${queries.xl}) {
+  @media (${queries.l} < width <= ${queries.xl}) {
     margin-left: 380px;
   }
 `;
 
 export const Buttons = styled.div`
-  position: fixed;
-  left: 90vw;
+  /* position: fixed;
+  left: 90%; */
 
   display: flex;
   flex-direction: column;
@@ -33,7 +35,7 @@ export const Buttons = styled.div`
     margin-bottom: 20px;
   }
 
-  @media (${queries.xxs} <= width <= ${queries.sm}) {
+  @media (${queries.xxs} <= width <= ${queries.l}) {
     left: auto;
 
     z-index: 50;
@@ -53,10 +55,10 @@ export const Buttons = styled.div`
       margin-bottom: 0px;
     }
 
-    @media (width < ${queries.sm}) {
-      width: 60vw;
+    @media (width <= ${queries.sm}) {
+      width: 55vw;
     }
-    @media (${queries.xs} < width <= ${queries.sm}) {
+    @media (${queries.sm} < width <= ${queries.l}) {
       width: 30vw;
     }
   }
@@ -79,17 +81,14 @@ export const Posts = styled.div`
   ${(props) =>
     props.view === "small" &&
     `
-      width: 100%;
+      width: auto;
       display: grid;
-      grid-template-columns: 45% 45%;
+      grid-template-columns: 48% 48%;
       justify-content: space-between;
-      column-gap: 10%;
+      column-gap: 4%;
       row-gap: 50px;
 
-      @media (${queries.xxs} <= width <= ${queries.sm}) {
-        width: 100%;
-      }
-      @media (width < ${queries.xl}) {
+      @media (width <= ${queries.l}) {
         display: flex;
         flex-direction: column;
         row-gap: 30px;
@@ -111,18 +110,14 @@ export const Posts = styled.div`
 `;
 
 export const Column = styled.div`
-  width: 700px;
+  width: 90%;
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 100px;
   align-items: center;
 
-  @media (width < ${queries.sm}) {
+  @media (width <= ${queries.l}) {
     width: 100%;
-    /* padding: 0 20px; */
-  }
-  @media (${queries.sm} < width < ${queries.xl}) {
-    width: 100%;
-    /* box-sizing: border-box; */
   }
 `;

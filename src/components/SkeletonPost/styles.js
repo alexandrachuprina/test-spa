@@ -15,15 +15,17 @@ export const Card = styled.div`
     p.theme.black && {
       boxShadow: "none",
       border: `1px solid ${p.theme.primary}`,
+      background:
+        "linear-gradient(to right, var(--dark-bg), var(--bg), var(--dark-bg))",
     }}
 
-  animation: ${gradient} 2s linear infinite;
-  background: linear-gradient(
-    to right,
-    var(--medium-gray),
-    var(--white),
-    var(--medium-gray)
-  );
+  ${(p) =>
+    p.theme.light && {
+      background:
+        "linear-gradient(to right, var(--medium-gray), var(--medium-gray), var(--white), var(--medium-gray), var(--medium-gray))",
+    }}
+
+  animation: ${gradient} 2s ease infinite;
   background-size: 200%;
   opacity: 0.5;
 
@@ -31,20 +33,27 @@ export const Card = styled.div`
     props.view === "large" &&
     `
       display: flex;
-      width: 700px;
+      // width: 700px;
       height: 400px;
 
       background-color: transparent;
       border-radius: 18px;
       box-shadow: rgba(0, 0, 0, 0.09) 0px 6px 26px 0px;
       cursor: pointer;
+
+      @media (width <= ${queries.l}) {
+        width: 100%;
+      }
+      @media (${queries.l} < width) {
+        width: 100%;
+      }
     `}
 
   ${(props) =>
     props.view === "small" &&
     `
       display: flex;
-      width: 320px;
+      // width: 100%;
       height: 260px;
       
       background-color: transparent;
@@ -52,7 +61,9 @@ export const Card = styled.div`
       box-shadow: rgba(0, 0, 0, 0.09) 0px 6px 26px 0px;
       cursor: pointer;
 
-      @media (width < ${queries.sm}) {
+      @media (width < ${queries.l}) {
+        width: 100%;
+
         p {
           font-size: 12px;
         }

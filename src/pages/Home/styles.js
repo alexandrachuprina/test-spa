@@ -8,10 +8,11 @@ export const Page = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  @media (${queries.xxs} <= width <= ${queries.sm}) {
+  @media (${queries.xxs} <= width <= ${queries.l}) {
     margin-left: 0;
     display: flex;
     flex-direction: column;
+    row-gap: 80px;
   }
   @media (${queries.xxs} <= width <= 600px) {
     padding: 0 20px;

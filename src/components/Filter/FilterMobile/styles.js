@@ -27,10 +27,6 @@ export const CardMobile = styled.div`
   .search {
     display: flex;
     flex-direction: column;
-
-    @media (width < ${queries.l}) {
-      margin-bottom: 45px;
-    }
   }
 
   @media (${queries.sm} < width) {

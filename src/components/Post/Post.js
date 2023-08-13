@@ -40,13 +40,15 @@ function Post({ title, text, postView, user, userId, comments }) {
         <Card view={postView}>
           <div className="content">
             <h2 className="text">{title}</h2>
-            <p className="text">{showHighlight(keyword, text)}.</p>
+            {postView !== "list" && (
+              <p className="text">{showHighlight(keyword, text)}.</p>
+            )}
           </div>
 
           <div className="author">
             <p>
               post by
-              {postView === "list" && <br />}
+              {/* {postView === "list" && <br />} */}
               <Link to={`/users/${userId}`} className="user">
                 {user ? user : null}
               </Link>

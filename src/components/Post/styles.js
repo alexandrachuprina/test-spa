@@ -33,7 +33,6 @@ export const Card = styled.div`
   ${(props) =>
     props.view === "large" &&
     `
-      width: 700px;
       height: 400px;
 
       background-color: transparent;
@@ -76,7 +75,7 @@ export const Card = styled.div`
         scale: 1.05;
       }
 
-      @media (width <= ${queries.xl}) {
+      @media (width <= ${queries.l}) {
         width: 100%;
         h2 {
           font-size: 18px;
@@ -85,14 +84,18 @@ export const Card = styled.div`
           font-size: 12px;
         }
       }
+
+      @media (${queries.l} < width < ${queries.xxl}) {
+        width: auto;
+      }
+
     `}
 
   ${(props) =>
     props.view === "small" &&
     `
       display: flex;
-      width: 320px;
-      height: 260px;
+      width: 100%;
       
       background-color: transparent;
       border-radius: 18px;
@@ -121,7 +124,7 @@ export const Card = styled.div`
         display: none;
       }
 
-      @media (width <= ${queries.sm}) {
+      @media (width <= ${queries.l}) {
         width: 100%;
         p {
           font-size: 12px;
@@ -129,14 +132,17 @@ export const Card = styled.div`
         min-height: auto;
         height: fit-content;
       }
+      @media (${queries.l} < width < ${`1200px`}) {
+        height: 320px;
+      }
     `}
 
   ${(props) =>
     props.view === "list" &&
     `
       display: flex;
-      width: 720px;
-      height: 140px;
+      width: 100%;
+      height: fit-content;
 
       flex-direction: row;
       justify-content: space-between;
@@ -149,17 +155,13 @@ export const Card = styled.div`
         font-size: 18px;
       }
       p {
-        font-size: 14px;
-      }
-      .author {
-        p {
-          font-size: 12px;
-        }
-        align-self: flex-start;
-        margin-bottom: auto;
+        font-size: 12px;
       }
       .content {
         width: 70%;
+      }
+      .user {
+        margin-left: 3px;
       }
       .text {
         &::first-letter {
@@ -170,9 +172,9 @@ export const Card = styled.div`
         display: none;
       }
 
-      @media (width <= ${queries.xl}) {
-        width: 100%;
+      @media (width <= ${queries.sm}) {
         flex-direction: column;
+        align-items: flex-start;
         .content {
           width: 100%;
         }
