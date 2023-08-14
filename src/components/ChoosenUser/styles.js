@@ -18,13 +18,9 @@ export const Page = styled.div`
     margin-bottom: 30px;
   }
 
-  @media (width < ${queries.sm}) {
+  @media (width < ${`600px`}) {
     padding: 0 20px;
   }
-  /* @media (width <= ${queries.l}) {
-    flex-direction: column;
-  } */
-
   @media (${queries.xl} <= width) {
     max-width: 1600px;
   }
@@ -60,6 +56,7 @@ export const Content = styled.div`
 
 export const Posts = styled.div`
   width: 100%;
+
   display: grid;
   grid-template-columns: repeat(4, 22%);
   justify-content: space-between;
@@ -68,23 +65,48 @@ export const Posts = styled.div`
   padding: 20px 0;
 
   @media (width <= ${queries.l}) {
-    /* min-width: auto;
+    width: 100%;
+    height: fit-content;
 
-    overflow: auto;
-    overflow-y: auto;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-
+  }
+  @media (${queries.l} < width < ${`1200px`}) {
     width: 100%;
-    height: fit-content; */
+    height: fit-content;
+
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    justify-content: space-between;
+    column-gap: 4%;
+    row-gap: 40px;
   }
 `;
 
 export const Todos = styled.div`
-
   display: grid;
   grid-template-columns: repeat(4, 22%);
   justify-content: space-between;
   column-gap: 4%;
   row-gap: 40px;
-`
+
+  @media (width <= ${queries.l}) {
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (${queries.l} < width < ${`1200px`}) {
+    width: 100%;
+    height: fit-content;
+
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    justify-content: space-between;
+    column-gap: 4%;
+    row-gap: 40px;
+  }
+`;

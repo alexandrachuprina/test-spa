@@ -1,5 +1,5 @@
 import { keyframes, styled } from "styled-components";
-import { queries, skeletonGradient } from "../../styles/UI-kit";
+import { queries, skeletonGradient } from "../../../styles/UI-kit";
 
 const gradient = keyframes`
 0% {

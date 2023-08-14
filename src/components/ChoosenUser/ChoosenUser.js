@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo, setIsLoadingUser, setUserId } from "../../app/usersSlice";
 import Todo from "../Todo/Todo";
-import { Page, Content, Posts, Todos } from "./styles";
+import { Page, Posts, Todos } from "./styles";
 import PostByUser from "../PostByUser/PostByUser";
-import AboutUserCard from "./AboutUserCard/AboutUserCard";
+import UserCard from "../UserCard/UserCard";
+import SkeletonUserCard from "../UserCard/SkeletonUserCard/SkeletonUserCard";
+import SkeletonPostByUser from "../PostByUser/SkeletonPostByUser/SkeletonPostByUser";
+import SkeletonTodo from "../Todo/SkeletonTodo/SkeletonTodo";
 
 const ChoosenUser = () => {
   const { index } = useParams();
@@ -43,50 +46,55 @@ const ChoosenUser = () => {
   }, [isLoading]);
 
   return (
-    <>
-      {!loading ? (
-        <Page>
-          <AboutUserCard
-            name={user.name}
-            email={user.email}
-            phone={user.phone}
-            street={user.address.street}
-            city={user.address.city}
-            zipcode={user.address.zipcode}
-            company={user.company.name}
-            bs={user.company.bs}
-          />
-          {/* <Content> */}
-            <div>
-              <h2 className="title">Публикации</h2>
-              <Posts>
-                {posts.map((post) => (
-                  <PostByUser
-                    key={post.id}
-                    title={post.post.title}
-                    text={post.post.body}
-                  />
-                ))}
-              </Posts>
-            </div>
-            <div>
-              <h2 className="title">To-do list</h2>
-              <Todos>
-                {todos.map((todo) => (
-                  <Todo
-                    key={todo.id}
-                    title={todo.title}
-                    completed={todo.completed}
-                  />
-                ))}
-              </Todos>
-            </div>
-          {/* </Content> */}
-        </Page>
-      ) : (
-        <p>Loading...</p>
+    <Page>
+      {!loading && (
+        <UserCard
+          name={user.name}
+          email={user.email}
+          phone={user.phone}
+          street={user.address.street}
+          city={user.address.city}
+          zipcode={user.address.zipcode}
+          company={user.company.name}
+          bs={user.company.bs}
+        />
       )}
-    </>
+      {loading && <SkeletonUserCard />}
+      <div>
+        <h2 className="title">Публикации</h2>
+        <Posts>
+          {!loading &&
+            posts.map((post) => (
+              <PostByUser
+                key={post.id}
+                title={post.post.title}
+                text={post.post.body}
+              />
+            ))}
+          {loading &&
+            [1, 2, 3, 4, 5, 6, 7, 8, 9].map((post, i) => (
+              <SkeletonPostByUser key={post[i]} />
+            ))}
+        </Posts>
+      </div>
+      <div>
+        <h2 className="title">To-do list</h2>
+        <Todos>
+          {!loading &&
+            todos.map((todo) => (
+              <Todo
+                key={todo.id}
+                title={todo.title}
+                completed={todo.completed}
+              />
+            ))}
+          {loading &&
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((todo, i) => (
+              <SkeletonTodo key={todo[i]} />
+            ))}
+        </Todos>
+      </div>
+    </Page>
   );
 };
 

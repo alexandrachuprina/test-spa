@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import { queries } from "../../styles/UI-kit";
-import { BasicCard } from "../../styles/UI-kit";
+import { queries } from '../../../styles/UI-kit'
+import { BasicCard } from "../../../styles/UI-kit";
 
 export const Card = styled(BasicCard)`
   min-height: 180px;

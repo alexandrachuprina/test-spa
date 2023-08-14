@@ -4,8 +4,7 @@ import { BasicCard } from "../../styles/UI-kit";
 
 export const Card = styled(BasicCard)`
   min-height: 60px;
-  height: 100px;
-  /* width: auto; */
+  height: 80px;
 
   display: flex;
   flex-direction: row;
@@ -33,6 +32,7 @@ export const Card = styled(BasicCard)`
     }}
 
   @media (width <= ${queries.l}) {
+    height: fit-content;
     width: 100%;
   }
 `;
