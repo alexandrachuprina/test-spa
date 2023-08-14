@@ -7,9 +7,9 @@ import Post from "../Post/Post";
 import Small from "./icons/Small";
 import Large from "./icons/Large";
 import List from "./icons/List";
-import PostsSlice, { getMorePosts } from "../../app/postsSlice";
+import { getMorePosts } from "../../app/postsSlice";
 import { skeletonPosts } from "./skeleton";
-import SkeletonPost from "../SkeletonPost/SkeletonPost";
+import SkeletonPost from "../Post/SkeletonPost/SkeletonPost";
 
 function ListOfPosts() {
   const posts = useSelector((state) => state.posts.posts);

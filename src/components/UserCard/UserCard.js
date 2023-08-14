@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "./styles";
 
-const AboutUserCard = ({
+const UserCard = ({
   name,
   email,
   phone,
@@ -30,4 +30,4 @@ const AboutUserCard = ({
   );
 };
 
-export default AboutUserCard;
+export default UserCard;

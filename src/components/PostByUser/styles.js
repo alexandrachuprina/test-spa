@@ -2,7 +2,8 @@ import { styled } from "styled-components";
 import { queries } from "../../styles/UI-kit";
 
 export const Post = styled.div`
-  height: 260px;
+  min-height: 260px;
+  max-height: 290px;
   width: 100%;
 
   background-color: transparent;
@@ -43,11 +44,15 @@ export const Post = styled.div`
       border: `1px solid ${p.theme.primary}`,
     }}
 
-  @media (width < ${queries.sm}) {
+  @media (width <= ${queries.l}) {
     p {
       font-size: 12px;
     }
     min-height: auto;
     height: fit-content;
+  }
+  @media (${queries.l} < width < ${queries.xl}) {
+    min-height: 160px;
+    max-height: 200px;
   }
 `;

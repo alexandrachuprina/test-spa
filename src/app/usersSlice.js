@@ -31,7 +31,7 @@ const usersSlice = createSlice({
     },
     getUserInfo: (state) => {
       console.log("get user info start");
-      // state.isLoadingUser = true;
+      state.isLoadingUser = true;
     },
     getUserInfoSuccess: (state, action) => {
       console.log(action.payload);
