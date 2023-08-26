@@ -25,9 +25,6 @@ export const Page = styled.div`
 `;
 
 export const Buttons = styled.div`
-  /* position: fixed;
-  left: 90%; */
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -38,7 +35,7 @@ export const Buttons = styled.div`
   @media (${queries.xxs} <= width <= ${queries.l}) {
     left: auto;
 
-    z-index: 50;
+    z-index: 40;
     position: fixed;
     top: 80vh;
     display: flex;

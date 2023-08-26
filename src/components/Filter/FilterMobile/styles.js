@@ -5,7 +5,7 @@ export const CardMobile = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  z-index: 5;
+  z-index: 50;
 
   h2 {
     font-size: 24px;
@@ -51,6 +51,7 @@ export const ModalCard = styled.div`
   width: 100%;
   height: 80vh;
   padding: 20px;
+  z-index: 50;
 
   overflow: scroll;
   overflow-y: scroll;
